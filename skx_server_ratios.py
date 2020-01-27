@@ -1377,6 +1377,7 @@ can improve the latency and increase performance."""
     server = True
     metricgroup = ['Memory_Bound']
     def compute(self, EV):
+        #print "============= DRAM_Bound Compute ==========="
         try:
             self.val = MEM_Bound_Ratio(self, EV, 3)
             self.thresh = (self.val > 0.1) & self.parent.thresh

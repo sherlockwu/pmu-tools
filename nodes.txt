@@ -1,0 +1,232 @@
+Nodes:
+Frontend_Bound
+	This category represents fraction of slots where the
+	processor's Frontend undersupplies its Backend...
+Frontend_Bound.Frontend_Latency
+	This metric represents fraction of slots the CPU was stalled
+	due to Frontend latency issues...
+Frontend_Bound.Frontend_Latency.ICache_Misses
+	This metric represents fraction of cycles the CPU was
+	stalled due to instruction cache misses...
+Frontend_Bound.Frontend_Latency.ITLB_Misses
+	This metric represents fraction of cycles the CPU was
+	stalled due to Instruction TLB (ITLB) misses...
+Frontend_Bound.Frontend_Latency.Branch_Resteers
+	This metric represents fraction of cycles the CPU was
+	stalled due to Branch Resteers...
+Frontend_Bound.Frontend_Latency.Branch_Resteers.Mispredicts_Resteers
+	This metric represents fraction of cycles the CPU was
+	stalled due to Branch Resteers as a result of Branch
+	Misprediction at execution stage...
+Frontend_Bound.Frontend_Latency.Branch_Resteers.Clears_Resteers
+	This metric represents fraction of cycles the CPU was
+	stalled due to Branch Resteers as a result of Machine
+	Clears...
+Frontend_Bound.Frontend_Latency.Branch_Resteers.Unknown_Branches
+	This metric represents fraction of cycles the CPU was
+	stalled due to new branch address clears...
+Frontend_Bound.Frontend_Latency.DSB_Switches
+	This metric represents fraction of cycles the CPU was
+	stalled due to switches from DSB to MITE pipelines...
+Frontend_Bound.Frontend_Latency.LCP
+	This metric represents fraction of cycles CPU was stalled
+	due to Length Changing Prefixes (LCPs)...
+Frontend_Bound.Frontend_Latency.MS_Switches
+	This metric estimates the fraction of cycles when the CPU
+	was stalled due to switches of uop delivery to the Microcode
+	Sequencer (MS)...
+Frontend_Bound.Frontend_Bandwidth
+	This metric represents fraction of slots the CPU was stalled
+	due to Frontend bandwidth issues...
+Frontend_Bound.Frontend_Bandwidth.MITE
+	This metric represents Core fraction of cycles in which CPU
+	was likely limited due to the MITE pipeline (Legacy Decode
+	Pipeline)...
+Frontend_Bound.Frontend_Bandwidth.DSB
+	This metric represents Core fraction of cycles in which CPU
+	was likely limited due to DSB (decoded uop cache) fetch
+	pipeline...
+Frontend_Bound.Frontend_Bandwidth.LSD
+	This metric represents Core fraction of cycles in which CPU
+	was likely limited due to LSD (Loop Stream Detector) unit...
+Bad_Speculation
+	This category represents fraction of slots wasted due to
+	incorrect speculations...
+Bad_Speculation.Branch_Mispredicts
+	This metric represents fraction of slots the CPU has wasted
+	due to Branch Misprediction...
+Bad_Speculation.Machine_Clears
+	This metric represents fraction of slots the CPU has wasted
+	due to Machine Clears...
+Backend_Bound
+	This category represents fraction of slots where no uops are
+	being delivered due to a lack of required resources for
+	accepting new uops in the Backend...
+Backend_Bound.Memory_Bound
+	This metric represents fraction of slots the Memory
+	subsystem within the Backend was a bottleneck...
+Backend_Bound.Memory_Bound.L1_Bound
+	This metric estimates how often the CPU was stalled without
+	loads missing the L1 data cache...
+Backend_Bound.Memory_Bound.L1_Bound.DTLB_Load
+	This metric roughly estimates the fraction of cycles where
+	the Data TLB (DTLB) was missed by load accesses...
+Backend_Bound.Memory_Bound.L1_Bound.DTLB_Load.Load_STLB_Hit
+	This metric roughly estimates the fraction of cycles where
+	the (first level) DTLB was missed by load accesses, that
+	later on hit in second-level TLB (STLB)
+Backend_Bound.Memory_Bound.L1_Bound.DTLB_Load.Load_STLB_Miss
+	This metric estimates the fraction of cycles where the
+	Second-level TLB (STLB) was missed by load accesses,
+	performing a hardware page walk
+Backend_Bound.Memory_Bound.L1_Bound.Store_Fwd_Blk
+	This metric roughly estimates fraction of cycles when the
+	memory subsystem had loads blocked since they could not
+	forward data from earlier (in program order) overlapping
+	stores...
+Backend_Bound.Memory_Bound.L1_Bound.Lock_Latency
+	This metric represents fraction of cycles the CPU spent
+	handling cache misses due to lock operations...
+Backend_Bound.Memory_Bound.L1_Bound.Split_Loads
+	This metric estimates fraction of cycles handling memory
+	load split accesses - load that cross 64-byte cacheline
+	boundary...
+Backend_Bound.Memory_Bound.L1_Bound.4K_Aliasing
+	This metric estimates how often memory load accesses were
+	aliased by preceding stores (in program order) with a 4K
+	address offset...
+Backend_Bound.Memory_Bound.L1_Bound.FB_Full
+	This metric does a *rough estimation* of how often L1D Fill
+	Buffer unavailability limited additional L1D miss memory
+	access requests to proceed...
+Backend_Bound.Memory_Bound.L2_Bound
+	This metric estimates how often the CPU was stalled due to
+	L2 cache accesses by loads...
+Backend_Bound.Memory_Bound.L3_Bound
+	This metric estimates how often the CPU was stalled due to
+	loads accesses to L3 cache or contended with a sibling Core...
+Backend_Bound.Memory_Bound.L3_Bound.Contested_Accesses
+	This metric estimates fraction of cycles while the memory
+	subsystem was handling contested accesses...
+Backend_Bound.Memory_Bound.L3_Bound.Data_Sharing
+	This metric estimates fraction of cycles while the memory
+	subsystem was handling data-sharing accesses...
+Backend_Bound.Memory_Bound.L3_Bound.L3_Hit_Latency
+	This metric represents fraction of cycles with demand load
+	accesses that hit the L3 cache under unloaded scenarios
+	(possibly L3 latency limited)...
+Backend_Bound.Memory_Bound.L3_Bound.SQ_Full
+	This metric measures fraction of cycles where the Super
+	Queue (SQ) was full taking into account all request-types
+	and both hardware SMT threads (Logical Processors)...
+Backend_Bound.Memory_Bound.DRAM_Bound
+	This metric estimates how often the CPU was stalled on
+	accesses to external memory (DRAM) by loads...
+Backend_Bound.Memory_Bound.DRAM_Bound.MEM_Bandwidth
+	This metric estimates fraction of cycles where the core's
+	performance was likely hurt due to approaching bandwidth
+	limits of external memory (DRAM)...
+Backend_Bound.Memory_Bound.DRAM_Bound.MEM_Latency
+	This metric estimates fraction of cycles where the
+	performance was likely hurt due to latency from external
+	memory (DRAM)...
+Backend_Bound.Memory_Bound.DRAM_Bound.MEM_Latency.Local_DRAM
+	This metric represents how often CPU was likely stalled due
+	to loads from local memory...
+Backend_Bound.Memory_Bound.DRAM_Bound.MEM_Latency.Remote_DRAM
+	This metric represents how often CPU was likely stalled due
+	to loads from remote memory...
+Backend_Bound.Memory_Bound.DRAM_Bound.MEM_Latency.Remote_Cache
+	This metric represents how often CPU was likely stalled due
+	to loads from remote cache in other sockets...
+Backend_Bound.Memory_Bound.PMM_Bound
+	This metric roughly estimates (based on idle latencies) how
+	often the CPU was stalled on accesses to external 3D-Xpoint
+	(Crystal Ridge, a...
+Backend_Bound.Memory_Bound.Store_Bound
+	This metric estimates how often CPU was stalled  due to
+	store memory accesses...
+Backend_Bound.Memory_Bound.Store_Bound.Store_Latency
+	This metric estimates fraction of cycles the CPU spent
+	handling L1D store misses...
+Backend_Bound.Memory_Bound.Store_Bound.False_Sharing
+	This metric roughly estimates how often CPU was stalled due
+	to False Sharing...
+Backend_Bound.Memory_Bound.Store_Bound.Split_Stores
+	This metric represents rate of split store accesses...
+Backend_Bound.Memory_Bound.Store_Bound.DTLB_Store
+	This metric roughly estimates the fraction of cycles spent
+	handling first-level data TLB store misses...
+Backend_Bound.Memory_Bound.Store_Bound.DTLB_Store.Store_STLB_Hit
+	This metric roughly estimates the fraction of cycles where
+	the TLB was missed by store accesses, hitting in the second-
+	level TLB (STLB)
+Backend_Bound.Memory_Bound.Store_Bound.DTLB_Store.Store_STLB_Miss
+	This metric estimates the fraction of cycles where the STLB
+	was missed by store accesses, performing a hardware page
+	walk
+Backend_Bound.Core_Bound
+	This metric represents fraction of slots where Core non-
+	memory issues were of a bottleneck...
+Backend_Bound.Core_Bound.Divider
+	This metric represents fraction of cycles where the Divider
+	unit was active...
+Backend_Bound.Core_Bound.Ports_Utilization
+	This metric estimates fraction of cycles the CPU performance
+	was potentially limited due to Core computation issues (non
+	divider-related)...
+Backend_Bound.Core_Bound.Ports_Utilization.Ports_Utilized_0
+	This metric represents Physical Core fraction of cycles CPU
+	executed no uops on any execution port...
+Backend_Bound.Core_Bound.Ports_Utilization.Ports_Utilized_0.Serializing_Operation
+	This metric represents fraction of cycles the CPU issue-
+	pipeline was stalled due to serializing operations...
+Backend_Bound.Core_Bound.Ports_Utilization.Ports_Utilized_1
+	This metric represents Physical Core fraction of cycles
+	where the CPU executed total of 1 uop per cycle on all
+	execution ports...
+Backend_Bound.Core_Bound.Ports_Utilization.Ports_Utilized_2
+	This metric represents Physical Core fraction of cycles CPU
+	executed total of 2 uops per cycle on all execution ports...
+Backend_Bound.Core_Bound.Ports_Utilization.Ports_Utilized_3m
+	This metric represents Physical Core fraction of cycles CPU
+	executed total of 3 or more uops per cycle on all execution
+	ports...
+Backend_Bound.Core_Bound.Ports_Utilization.Ports_Utilized_3m.ALU_Op_Utilization
+	This metric represents Core fraction of cycles CPU
+	dispatched uops on execution ports for ALU operations...
+Backend_Bound.Core_Bound.Ports_Utilization.Ports_Utilized_3m.Load_Op_Utilization
+	This metric represents Core fraction of cycles CPU
+	dispatched uops on execution port for Load operations
+Backend_Bound.Core_Bound.Ports_Utilization.Ports_Utilized_3m.Store_Op_Utilization
+	This metric represents Core fraction of cycles CPU
+	dispatched uops on execution port for Store operations
+Retiring
+	This category represents fraction of slots utilized by
+	useful work i...
+Retiring.Base
+	This metric represents fraction of slots where the CPU was
+	retiring regular uops (ones not originated from the
+	microcode-sequencer)...
+Retiring.Base.FP_Arith
+	This metric represents overall arithmetic floating-point
+	(FP) uops fraction the CPU has executed (retired)
+Retiring.Base.FP_Arith.X87_Use
+	This metric serves as an approximation of legacy x87 usage...
+Retiring.Base.FP_Arith.FP_Scalar
+	This metric represents arithmetic floating-point (FP) scalar
+	uops fraction the CPU has executed (retired)...
+Retiring.Base.FP_Arith.FP_Vector
+	This metric represents arithmetic floating-point (FP) vector
+	uops fraction the CPU has executed (retired) aggregated
+	across all vector widths...
+Retiring.Base.Other
+	This metric represents non-floating-point (FP) uop fraction
+	the CPU has executed...
+Retiring.Microcode_Sequencer
+	This metric represents fraction of slots the CPU was
+	retiring uops fetched by the Microcode Sequencer (MS) unit...
+Retiring.Microcode_Sequencer.Assists
+	This metric estimates fraction of cycles the CPU retired
+	uops delivered by the Microcode_Sequencer as a result of
+	Assists...

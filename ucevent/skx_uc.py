@@ -15734,6 +15734,7 @@ events = {
           "Desc": "HA to iMC Reads Issued",
           "EvSel": 89,
           "ExtSel": "",
+          "Umask": "b00000001",
           "Notes": "To match the number of reads seen at the IMC, it's necessary to account for any bypasses.   IMC_READS_COUNT.* + BYPASS_CHA_IMC.TAKEN == CAS_COUNT.RD",
      },
      "CHA.IMC_READS_COUNT.PRIORITY": {
@@ -24330,6 +24331,24 @@ events = {
           "EvSel": 17,
           "ExtSel": "",
      },
+     "iMC.PMM_RPQ_INSERTS_KAN": {
+          "Box": "iMC",
+          "Category": "iMC PMM RPQ Events",
+          "Counters": "0-3",
+          "Defn": "Counts the number of allocations into the PMM Read Pending Queue.  This queue is used to schedule reads out to the memory controller and to track the requests.  Requests allocate into the RPQ soon after they enter the memory controller, and need credits for an entry in this buffer before being sent from the HA to the iMC.  They deallocate after the CAS command has been issued to memory.  This includes both ISOCH and non-ISOCH requests.",
+          "Desc": "PMM Read Pending Queue Allocations",
+          "EvSel": 227,
+          "ExtSel": "",
+     },
+     "iMC.PMM_WPQ_INSERTS_KAN": {
+          "Box": "iMC",
+          "Category": "iMC PMM WPQ Events",
+          "Counters": "0-3",
+          "Defn": "Counts the number of allocations into the PMM Read Pending Queue.  This queue is used to schedule reads out to the memory controller and to track the requests.  Requests allocate into the RPQ soon after they enter the memory controller, and need credits for an entry in this buffer before being sent from the HA to the iMC.  They deallocate after the CAS command has been issued to memory.  This includes both ISOCH and non-ISOCH requests.",
+          "Desc": "PMM Read Pending Queue Allocations",
+          "EvSel": 231,
+          "ExtSel": "",
+     },
      "iMC.RPQ_INSERTS": {
           "Box": "iMC",
           "Category": "iMC RPQ Events",
@@ -24338,6 +24357,16 @@ events = {
           "Desc": "Read Pending Queue Allocations",
           "EvSel": 16,
           "ExtSel": "",
+     },
+     "iMC.PMM_RPQ_OCCUPANCY_KAN": {
+          "Box": "iMC",
+          "Category": "iMC PMM RPQ Events",
+          "Counters": "0-3",
+          "Defn": "Accumulates the occupancies of the Read Pending Queue each cycle.  This can then be used to calculate both the average occupancy (in conjunction with the number of cycles not empty) and the average latency (in conjunction with the number of allocations).  The RPQ is used to schedule reads out to the memory controller and to track the requests.  Requests allocate into the RPQ soon after they enter the memory controller, and need credits for an entry in this buffer before being sent from the HA to the iMC. They deallocate after the CAS command has been issued to memory.",
+          "Desc": "PMM Read Pending Queue Occupancy",
+          "EvSel": 224,
+          "ExtSel": "",
+          "Umask": "b00000001",
      },
      "iMC.RPQ_OCCUPANCY": {
           "Box": "iMC",
@@ -26016,6 +26045,20 @@ events = {
 derived = {
      
 # iMC:
+     "iMC.PMM_BW_READS_KAN": {
+          "Box": "iMC",
+          "Category": "iMC PRE Events",
+          "Defn": "Memory bandwidth consumed by reads.  Expressed in bytes.",
+          "Desc": "Read Memory Bandwidth",
+          "Equation": "(PMM_RPQ_INSERTS_KAN * 64)",
+     },
+     "iMC.PMM_BW_WRITES_KAN": {
+          "Box": "iMC",
+          "Category": "iMC PRE Events",
+          "Defn": "Memory bandwidth consumed by writes.  Expressed in bytes.",
+          "Desc": "Read Memory Bandwidth",
+          "Equation": "(PMM_WPQ_INSERTS_KAN * 64)",
+     },
      "iMC.MEM_BW_READS": {
           "Box": "iMC",
           "Category": "iMC PRE Events",

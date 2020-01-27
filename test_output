@@ -1,0 +1,40 @@
+Will measure complete system.
+Using level 1.
+perf stat -x\; -e '{cpu/event=0x48,umask=0x1,cmask=1/,cpu/event=0x48,umask=0x1/},{cpu/event=0xd1,umask=0x40/,cpu/event=0xd1,umask=0x8/,cpu/event=0x48,umask=0x1/},{cpu/event=0x3c,umask=0x0,any=1/,cpu/event=0x9c,umask=0x1/,cpu/event=0xc2,umask=0x2/},{cpu/event=0x3c,umask=0x0,any=1/,cpu/event=0xe,umask=0x1/,cpu/event=0xd,umask=0x1,any=1/,cpu/event=0xc2,umask=0x2/},{cpu/event=0x3c,umask=0x0,any=1/,cpu/event=0xe,umask=0x1/,cpu/event=0x9c,umask=0x1/,cpu/event=0xc2,umask=0x2/},{cpu/event=0xa6,umask=0x1/,cpu/event=0xa6,umask=0x40/,cpu/event=0xa3,umask=0x14,cmask=20/},{cpu/event=0xa6,umask=0x4/,cpu/event=0xa6,umask=0x2/,cycles,instructions},{cpu/event=0xa3,umask=0xc,cmask=12/,cpu/event=0xa6,umask=0x40/,cycles,cpu/event=0xa3,umask=0x14,cmask=20/},{cpu/event=0xa3,umask=0x6,cmask=6/,cycles,cpu/event=0xa3,umask=0x5,cmask=5/},{cpu/event=0x48,umask=0x2,cmask=1/,cpu/event=0xa3,umask=0xc,cmask=12/,cpu/event=0xa3,umask=0x5,cmask=5/,cycles},{cpu/event=0xd1,umask=0x40/,cpu/event=0xd1,umask=0x4/,cpu/event=0xd1,umask=0x2/},{cpu/event=0xd2,umask=0x1/,cpu/event=0xd2,umask=0x2/,cpu/event=0xd2,umask=0x4/},{cpu/event=0xd3,umask=0x1/,cpu/event=0xd3,umask=0x2/,cpu/event=0xd3,umask=0x4/},cpu/event=0xd3,umask=0x8/,{cpu/event=0xa3,umask=0x6,cmask=6/,cpu/event=0xa3,umask=0x5,cmask=5/,cycles,cpu/event=0xa3,umask=0xc,cmask=12/},{cpu/event=0x48,umask=0x2,cmask=1/,cpu/event=0xd1,umask=0x40/,cpu/event=0xd1,umask=0x2/},{cpu/event=0xd1,umask=0x4/,cpu/event=0xd2,umask=0x2/,cpu/event=0xd2,umask=0x4/},{cpu/event=0xd2,umask=0x1/,cpu/event=0xd3,umask=0x1/,cpu/event=0xd3,umask=0x2/},{cpu/event=0xd3,umask=0x8/,cpu/event=0xd3,umask=0x4/}' -A -a bash -c /home/kanwu/Research/PM_Bench/bw_mix 3932160000 15 1 256 read
+To creat some threads
+the system has 32 cores 
+=== this is thread 2 accessing NVM, on CPU 2
+=== this is thread 4 accessing NVM, on CPU 4
+=== this is thread 11 accessing NVM, on CPU 11
+=== this is thread 0 accessing dram, on CPU 0
+=== this is thread 12 accessing NVM, on CPU 12
+=== this is thread 7 accessing NVM, on CPU 7
+=== this is thread 6 accessing NVM, on CPU 6
+=== this is thread 10 accessing NVM, on CPU 10
+=== this is thread 8 accessing NVM, on CPU 8
+=== this is thread 9 accessing NVM, on CPU 9
+=== this is thread 14 accessing NVM, on CPU 14
+=== this is thread 13 accessing NVM, on CPU 13
+=== this is thread 3 accessing NVM, on CPU 3
+=== this is thread 5 accessing NVM, on CPU 5
+=== this is thread 1 accessing NVM, on CPU 1
+main: after creating all threads and warm up
+=== this is thread 8 accessing NVM, on CPU 8 iterations: 13.891 avg lat: -nan ns 
+=== this is thread 5 accessing NVM, on CPU 5 iterations: 13.869 avg lat: -nan ns 
+=== this is thread 3 accessing NVM, on CPU 3 iterations: 13.8964 avg lat: -nan ns 
+=== this is thread 13 accessing NVM, on CPU 13 iterations: 13.882 avg lat: -nan ns 
+=== this is thread 4 accessing NVM, on CPU 4 iterations: 13.8789 avg lat: -nan ns 
+=== this is thread 12 accessing NVM, on CPU 12 iterations: 13.8748 avg lat: -nan ns 
+=== this is thread 11 accessing NVM, on CPU 11 iterations: 13.8838 avg lat: -nan ns 
+=== this is thread 6 accessing NVM, on CPU 6 iterations: 13.8753 avg lat: -nan ns 
+=== this is thread 10 accessing NVM, on CPU 10 iterations: 13.8909 avg lat: -nan ns 
+=== this is thread 14 accessing NVM, on CPU 14 iterations: 13.8764 avg lat: -nan ns 
+=== this is thread 0 accessing DRAM, on CPU 0 iterations: 20.991 sampled: 0 avg lat: -nan ns 
+=== this is thread 2 accessing NVM, on CPU 2 iterations: 13.8977 avg lat: -nan ns 
+=== this is thread 9 accessing NVM, on CPU 9 iterations: 13.8947 avg lat: -nan ns 
+=== this is thread 7 accessing NVM, on CPU 7 iterations: 13.8634 avg lat: -nan ns 
+=== this is thread 1 accessing NVM, on CPU 1 iterations: 13.9049 avg lat: -nan ns 
+avg bw_dram/thread: 0.671704
+max bw_dram/thread: 0.671704
+smallest bw_dram/thread: 0.671704
+res use_clwb: 0 use_ram: 1 use_streaming: 1 use_write: 0 thread_count: 15 block_size: 256 nvm: 6.22005 0 dram: 0.671704 0
